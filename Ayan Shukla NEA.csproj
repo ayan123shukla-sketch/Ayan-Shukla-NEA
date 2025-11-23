@@ -75,6 +75,12 @@
     <Compile Include="DailyQuiz.Designer.cs">
       <DependentUpon>DailyQuiz.cs</DependentUpon>
     </Compile>
+    <Compile Include="StartWorkout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartWorkout.Designer.cs">
+      <DependentUpon>StartWorkout.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkoutsPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DailyQuiz.resx">
       <DependentUpon>DailyQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartWorkout.resx">
+      <DependentUpon>StartWorkout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkoutsPage.resx">
       <DependentUpon>WorkoutsPage.cs</DependentUpon>
@@ -154,9 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Second_password_icon-removebg-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\Ayan Shukla NEA - Copy\Ayan Shukla NEA.sln" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />

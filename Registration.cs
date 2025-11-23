@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 using System.Security.Cryptography;
 
+
 namespace Ayan_Shukla_NEA
 {
     public partial class Registration : Form
@@ -44,7 +45,7 @@ namespace Ayan_Shukla_NEA
         private void Register_Click(object sender, EventArgs e)
         {
             //string hashedPassword = ComputeSha256Hash(RUser.Text);
-            string hashedPassword = hash.Compute(RPassword.Text);
+            string hashedPassword = Compute(RPassword.Text);
             string DRName = Regname.Text;
             string DRUser = RUser.Text;
             //string DRPassword = RPassword.Text;
@@ -73,6 +74,25 @@ namespace Ayan_Shukla_NEA
             Console.WriteLine("Well done you have registered succesfully");
             this.Hide();
             new LoginPage().Show();
+      
+        
+        }
+        public static string Compute(string input)
+        {
+            unchecked
+            {
+                const uint FNV_OFFSET = 2166136261u;//Number to begin hash with
+                const uint FNV_PRIME = 16777619u;//Number we multiply with
+                uint hash = FNV_OFFSET;//Start hash with first number
+
+                foreach (byte b in System.Text.Encoding.UTF8.GetBytes(input ?? ""))//Turn each input into bytes, if input is empty turn it into " "
+                {
+                    hash ^= b;//combines hash with bytes
+                    hash *= FNV_PRIME;//mixes the hash more
+                }
+
+                return hash.ToString("x8");//convert 32bit value into hex
+            }
         }
     }
 }
