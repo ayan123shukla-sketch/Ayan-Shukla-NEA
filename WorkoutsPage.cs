@@ -10,26 +10,31 @@ using System.Windows.Forms;
 
 namespace Ayan_Shukla_NEA
 {
-    public partial class Form5 : Form
+    public partial class WorkoutsPage : Form
     {
-        public Form5()
+        public WorkoutsPage()
         {
             InitializeComponent();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            new Form3().Show();
+            new DashboardPage().Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new Form6().Show();
+            new WeeklyChallengesPage().Show();
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void WorkoutsPage_Load(object sender, EventArgs e)
+        {
+ 
         }
     }
 }

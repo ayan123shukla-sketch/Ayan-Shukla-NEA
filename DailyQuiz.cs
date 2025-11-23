@@ -10,26 +10,34 @@ using System.Windows.Forms;
 
 namespace Ayan_Shukla_NEA
 {
-    public partial class Form3 : Form
+    public partial class DailyQuiz : Form
     {
-        public Form3()
+        public DailyQuiz()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            new Form5().Show();
+
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void DailyQuiz_Load(object sender, EventArgs e)
         {
-            new DailyQuiz().Show();
+
+        }
+
+        private void radioButton8_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new Form6().Show();
+           
+
+            new DashboardPage().Show();
+            this.Hide();
         }
     }
 }

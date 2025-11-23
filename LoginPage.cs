@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Reflection.Emit;
 
 
 namespace Ayan_Shukla_NEA
 {
-    public partial class Form1 : Form
+    public partial class LoginPage : Form
     {
-       
-    
 
-        public Form1()
+
+
+        public LoginPage()
         {
             InitializeComponent();
         }
@@ -26,16 +27,16 @@ namespace Ayan_Shukla_NEA
 
         private void LOGIN_Click(object sender, EventArgs e)
         {
-            string hashedPassword = hash.ComputeSha256Hash(txtPassword.Text);
+            string hashedPassword = hash.Compute(txtPassword.Text);
             string enteredUser = txtUser.Text;
             string enteredPass = txtPassword.Text;
-          
-            
+
+
             using (SQLiteConnection myConnection = new SQLiteConnection("Data Source=NEA DB.db"))
             {
                 myConnection.Open();
 
-               
+
                 string query = "SELECT COUNT(*) FROM NEA_LOGIN WHERE Username = @username AND PasswordHash = @password";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, myConnection))
@@ -43,14 +44,17 @@ namespace Ayan_Shukla_NEA
                     cmd.Parameters.AddWithValue("@username", enteredUser);
                     cmd.Parameters.AddWithValue("@password", hashedPassword);
 
-                    
+
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
 
                     if (count > 0)
                     {
                         // Login successful
                         MessageBox.Show("Login successful!");
-                        new Form2().Show();
+                        DiagnosticQuizPage DQPf = new DiagnosticQuizPage();
+                        DQPf.Username = enteredUser;
+                        DQPf.Show();
+
                         this.Hide();
                     }
                     else
@@ -79,12 +83,22 @@ namespace Ayan_Shukla_NEA
             Application.Exit();
         }
 
-      
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             new Registration().Show();
             this.Hide();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

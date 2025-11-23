@@ -1,25 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
+
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Ayan_Shukla_NEA
 {
-    internal class hash
+    public static class hash
     {
-        public static string ComputeSha256Hash(string rawData)
+        
+
+        public static string Compute(string input)
         {
-            using (SHA256 sha256Hash = SHA256.Create())
+            unchecked
             {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-                StringBuilder builder = new StringBuilder();
-                foreach (byte b in bytes)
+                const uint FNV_OFFSET = 2166136261u;//Number to begin hash with
+                const uint FNV_PRIME = 16777619u;//Number we multiply with
+                uint hash = FNV_OFFSET;//Start hash with first number
+
+                foreach (byte b in System.Text.Encoding.UTF8.GetBytes(input ?? ""))//Turn each input into bytes, if input is empty turn it into " "
                 {
-                    builder.Append(b.ToString("x2"));
+                    hash ^= b;//combines hash with bytes
+                    hash *= FNV_PRIME;//mixes the hash more
                 }
-                return builder.ToString();
+
+                return hash.ToString("x8");//convert 32bit value into hex
             }
         }
     }

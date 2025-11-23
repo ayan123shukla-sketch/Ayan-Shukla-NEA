@@ -44,7 +44,7 @@ namespace Ayan_Shukla_NEA
         private void Register_Click(object sender, EventArgs e)
         {
             //string hashedPassword = ComputeSha256Hash(RUser.Text);
-            string hashedPassword = hash.ComputeSha256Hash(RPassword.Text);
+            string hashedPassword = hash.Compute(RPassword.Text);
             string DRName = Regname.Text;
             string DRUser = RUser.Text;
             //string DRPassword = RPassword.Text;
@@ -72,7 +72,7 @@ namespace Ayan_Shukla_NEA
 
             Console.WriteLine("Well done you have registered succesfully");
             this.Hide();
-            new Form1().Show();
+            new LoginPage().Show();
         }
     }
 }

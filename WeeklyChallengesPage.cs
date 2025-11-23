@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ayan_Shukla_NEA
 {
-    public partial class Form6 : Form
+    public partial class WeeklyChallengesPage : Form
     {
-        public Form6()
+        public WeeklyChallengesPage()
         {
             InitializeComponent();
         }
@@ -24,12 +24,12 @@ namespace Ayan_Shukla_NEA
 
         private void button4_Click(object sender, EventArgs e)
         {
-            new Form3().Show();
+            new DashboardPage().Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new Form5().Show();
+            new WorkoutsPage().Show();
         }
     }
 }
